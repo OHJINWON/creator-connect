@@ -13,7 +13,7 @@ address, caption, cite, code, em, strong, th{font-style: normal; font-weight: no
 ol, ul, li{list-style: none;}
 caption, th{text-align: left;}
 
-h1, h2, h3, h4, h5, h6{font-weight: normal; font-size: 100%;}
+/* h1, h2, h3, h4, h5, h6{font-weight: normal; font-size: 100%;} */
 q:after, q:before{content: "     ";}
 abbr, acronym{border: none;}
 
