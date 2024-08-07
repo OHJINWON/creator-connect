@@ -9,6 +9,7 @@ export default function BoardList() {
     
     const router = useRouter()
     const [email, setEmail] = useState<string | null>("")
+    const [isChecked, setIsChecked] = useState<boolean>(true)
     useEffect(() => {
         const storedEmail = sessionStorage.getItem("email");
         setEmail(storedEmail);
@@ -26,6 +27,10 @@ export default function BoardList() {
 
     console.log("BoardData",boardData)
     console.log("boardsData", boardsData )
+
+    const toggleHandler = () => {
+        setIsChecked(!isChecked)
+    }
 
     const onClickWriteMove = () => {
         router.push(`/board/write`)

@@ -2,13 +2,14 @@ import LayoutHeader from "./header/LayoutHeader.index"
 import styled from "@emotion/styled";
 import LayoutNavigation from "./navigation/LayoutNavigation.container";
 import LayoutBanner from "./banner/LayoutBanner.index";
+import LayoutFooter from "./footer/LayoutFooter.index";
 
 const Body = styled.div`
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: red
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 `;
 
 interface ILayoutProps {
@@ -21,6 +22,7 @@ export default function Layout(props: ILayoutProps) {
             <LayoutBanner/>
             <LayoutNavigation/>
             <Body>{props.children}</Body>
+            <LayoutFooter/>
         </>
     )
 }
