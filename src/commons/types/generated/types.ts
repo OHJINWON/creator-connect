@@ -35,7 +35,7 @@ export type ICreateBoardInput = {
   birthyear?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   email?: InputMaybe<Scalars['String']>;
-  field?: InputMaybe<Scalars['String']>;
+  field: Array<Scalars['String']>;
   gender?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   nickname?: InputMaybe<Scalars['String']>;

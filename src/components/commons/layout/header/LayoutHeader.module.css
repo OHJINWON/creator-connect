@@ -1,0 +1,29 @@
+.wrapper {
+    width: 100%;
+    height: 100px;
+    background-color: #f5f2fc;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.innerWrapper {
+    width: 1200px;
+    height: 100%;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    width: 100px;
+    height: 100px;
+    background: url("/images/favicon01.jpg") no-repeat center;
+    border: 1px solid #000;
+}
+.imfo {
+    width: auto;
+    height: auto;
+    border: 1px solid #000;
+}

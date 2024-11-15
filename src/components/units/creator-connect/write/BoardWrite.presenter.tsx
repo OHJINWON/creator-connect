@@ -1,99 +1,80 @@
+import Category from "../category/Category.container";
 import { IBoardWriteProps } from "./BoardWrite.types";
-import { Flex, Input } from 'antd';
+import { Input, Button } from 'antd';
+import styles from "./BoardWrite.module.css";
 
 export default function BoardWriteUI(props: IBoardWriteProps) {
-    // console.log("datasss", props.data?.fetchUser)
-    return(
-        <div>
-            <div>
-                <div>
-                    <h1>게시물 등록</h1>
-                </div>
-                {/* <div>
-                    <label htmlFor="info">내 정보 자동넣기</label>
-                    <input id="info" type="checkbox" checked={props.isChecked} onChange={props.handleChange}/>
-                </div> */}
-                {/* <div>
-                    <label htmlFor="name">이름</label>
-                    <input id="name" type="text" defaultValue={props.name}  onChange={props.onChangeName}/>
-                    <div>
-                        <p>{props.errName}</p>
-                    </div>
-                </div> */}
-                <div>
+    console.log("sadasd",props.categories)
+    return (
+        <div className={styles.boardWriteBox}>
+            <div className={styles.titleBox}>
+                <h1>게시물 등록</h1>
+            </div>
+            <div className={styles.formBox}>
+                <div className={styles.formItem}>
                     <label htmlFor="nickname">블로그 닉네임</label>
-                    <input id="nickname" type="text" defaultValue={props.nickname} onChange={props.onChangeNickName}/>
-                    <div>
-                        <p>{props.errNickName}</p>
-                    </div>
+                    <Input 
+                        id="nickname" 
+                        placeholder="닉네임을 입력하세요" 
+                        defaultValue={props.nickname} 
+                        onChange={props.onChangeNickName} 
+                    />
+                    {props.errNickName && <p className={styles.errorText}>{props.errNickName}</p>}
                 </div>
-                <div>
+                <div className={styles.formItem}>
                     <label htmlFor="password">비밀번호</label>
-                    <input id="password" type="text" defaultValue={props.password} onChange={props.onChangePassword}/>
-                    <div>
-                        <p>{props.errPassword}</p>
-                    </div>
+                    <Input.Password 
+                        id="password" 
+                        placeholder="비밀번호를 입력하세요" 
+                        defaultValue={props.password} 
+                        onChange={props.onChangePassword} 
+                    />
+                    {props.errPassword && <p className={styles.errorText}>{props.errPassword}</p>}
                 </div>
-                {/* <div>
-                    <label htmlFor="age">나이</label>
-                    <input id="age" type="text" defaultValue={props.age} placeholder="예시: 27" onChange={props.onChangeAge}/>
-                    <div>
-                        <p>{props.errAge}</p>
-                    </div>
-                </div> */}
-                {/* <div>
-                    <label htmlFor="gender">성별</label>
-                    <select id="gender" onChange={props.onChangeGender} defaultValue={props.gender}>
-                        <option value="">선택</option>
-                        <option value="M">남자</option>
-                        <option value="W">여자</option>
-                    </select>
-                    <div>
-                        <p>{props.errGender}</p>
-                    </div>
-                </div> */}
-                <div>
-                    <label htmlFor="filed">분야</label>
-                    <input id="filed" defaultValue={props.field} onChange={props.onChangeField}/>
-                    <div>
-                        <p>{props.errField}</p>
-                    </div>
+                <div className={styles.formItem}>
+                    <p>분야</p>
+                    {/* <Category/> */}
+                    <ul className={styles.categoryList}>
+                        {props.categories.map((category) => (
+                            <li
+                                key={category}
+                                className={
+                                props.field.includes(category) ? styles.selected : ""
+                                }
+                                onClick={() => props.handleCategoryClick(category)}
+                            >
+                                {category}
+                            </li>
+                        ))}
+                    </ul>
+                    {props.errField && <p className={styles.errorText}>{props.errField}</p>}
                 </div>
-                {/* <div>
-                    <label htmlFor="email">이메일</label>
-                    <input id="email" type="text" defaultValue={props.email} onChange={props.onChangeEmail}/>
-                    <div>
-                        <p>{props.errEmail}</p>
-                    </div>
-                </div> */}
-                <div>
+                <div className={styles.formItem}>
                     <label htmlFor="price">금액</label>
-                    <input id="price" type="text" defaultValue={props.price} onChange={props.onChangePrice}/>원
-                    <div>
-                        <p>{props.errPrice}</p>
-                    </div>
+                    <Input 
+                        id="price" 
+                        placeholder="금액을 입력하세요" 
+                        defaultValue={props.price} 
+                        addonAfter="원" 
+                        onChange={props.onChangePrice} 
+                    />
+                    {props.errPrice && <p className={styles.errorText}>{props.errPrice}</p>}
                 </div>
-                {/* <div>
-                    <label htmlFor="blogUri">블로그 주소</label>
-                    <input id="blogUri" type="text" />
-                </div> */}
-                <div>
-                    <p>자기소개</p>
-                    <Flex vertical gap={32}>
-                        <textarea 
-                            maxLength={100}
-                            placeholder="disable resize"
-                            style={{ height: 120, resize: 'none' }}
-                            onChange={props.onChangeInfo}
-                            defaultValue={props.info}
-                        />
-                    </Flex>
-                    <div>
-                        <p>{props.errInfo}</p>
-                    </div>
+                <div className={styles.formItem}>
+                    <label>자기소개</label>
+                    <Input.TextArea 
+                        placeholder="자기소개를 입력하세요" 
+                        maxLength={100} 
+                        style={{ resize: 'none' }} 
+                        onChange={props.onChangeInfo} 
+                        defaultValue={props.info} 
+                    />
+                    {props.errInfo && <p className={styles.errorText}>{props.errInfo}</p>}
                 </div>
-                <button onClick={props.onClickSubmit}>등록하기</button>
+                <Button type="primary" className={styles.submitButton} onClick={props.onClickSubmit}>
+                    등록하기
+                </Button>
             </div>
         </div>
-    )
+    );
 }

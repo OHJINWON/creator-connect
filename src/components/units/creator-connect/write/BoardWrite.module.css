@@ -1,0 +1,105 @@
+.boardWriteBox {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .titleBox {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .titleBox h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .formBox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .formItem {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .formItem > p {
+    padding: 10px 0;
+  }
+  
+  .formItem label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  
+  .formItem input,
+  .formItem textarea {
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .formItem input:focus,
+  .formItem textarea:focus {
+    border-color: #40a9ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    outline: none;
+  }
+  
+  .errorText {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .submitButton {
+    align-self: center;
+    width: 150px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #1890ff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .submitButton:hover {
+    background-color: #40a9ff;
+  }
+  
+  /* Category List Styles */
+  .categoryList {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .categoryList li {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: #e0e0e0;
+    color: #666;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .categoryList li:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .categoryList li.selected {
+    background-color: #333;
+    color: #fff;
+  }
+  

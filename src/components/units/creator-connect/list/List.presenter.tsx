@@ -1,21 +1,22 @@
 import { IBoardListProps } from "./List.types";
 import  styles  from "./List.module.css"
+import Category from "../category/Category.container";
 
 export default function BoardListUI(props: IBoardListProps): JSX.Element {
     return (
         <div className={styles.boardListBox}>
             <div className={styles.listBox_btn}>
-            <button onClick={props.onClickWriteMove}>등록하기</button>
-            {
-                props.boardData?.fetchBoard?.email ? <button onClick={props.onClickUpdateMove} id={props.boardData.fetchBoard.id || ""}>수정하기</button>
-                : <button onClick={props.onClickWriteMove}>등록하기</button>
-            }
+                <button onClick={props.onClickWriteMove}>등록하기</button>
+                {
+                    props.boardData?.fetchBoard?.email ? <button onClick={props.onClickUpdateMove} id={props.boardData.fetchBoard.id || ""}>수정하기</button>
+                    : <button onClick={props.onClickWriteMove}>등록하기</button>
+                }
             </div>
             <div>
-                <input type="search" placeholder="분야"/>
-                <input type="search" placeholder="가격"/>
-                <input type="search" placeholder="성별"/>
-                <button type="submit">검색하기</button>
+                <select>
+                    <option>내림차순</option>
+                    <option>올림차순</option>
+                </select>
             </div>
             <div className={styles.listBox_title}>
                 <div className={styles.title_box}>
@@ -27,8 +28,11 @@ export default function BoardListUI(props: IBoardListProps): JSX.Element {
                     </span>
                 </div>
             </div>
+            {/* <div>
+                <Category/>
+            </div> */}
             <div className={styles.listBox_info}>
-                <div className={styles.listBox_info_01}>
+                {/* <div className={styles.listBox_info_01}>
                 {
                     props.boardsData?.fetchBoards.map(data => 
                         <div className={styles.listBox_info_box} key={data.id}>
@@ -46,9 +50,9 @@ export default function BoardListUI(props: IBoardListProps): JSX.Element {
                     )
                 }   
                 
-                </div>
-                <div>1,2,3,,4,5,6</div>
+                </div> */}
             </div>
+            {/* <div>1,2,3,,4,5,6</div> */}
         </div>
     )
 }

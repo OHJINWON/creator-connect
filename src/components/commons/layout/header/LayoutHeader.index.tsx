@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import {
-  InnerButton,
-  InnerLogo,
-  InnerWrapper,
-  Wrapper,
-} from "./LayoutHeader.styles";
+// import {
+//   InnerButton,
+//   InnerLogo,
+//   InnerWrapper,
+//   Wrapper,
+// } from "./LayoutHeader.styles";
+import styles  from "./LayoutHeader.module.css"
 import { useRouter } from "next/router";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import {
@@ -144,23 +145,41 @@ export default function LayoutHeader() {
   };
 
   return (
-    <Wrapper>
-      <InnerWrapper>
-        <InnerLogo>💎 LIVE</InnerLogo>
-        <div>
-          {name ? (
-            <>
-              <InnerButton>{name}</InnerButton>
-              <InnerButton onClick={handleLogout}>로그아웃</InnerButton>
-            </>
-          ) : (
-            <>
-              <div id="naverIdLogin" style={{position: "absolute", top: "-100000px"}}/> {/* 네이버 로그인 버튼을 이 div에 렌더링 */}
-              <InnerButton onClick={handleNaverLogin}>로그인</InnerButton>
-            </>
-          )}
+    <div className={styles.wrapper}>
+        <div className={styles.innerWrapper}>
+            <div className={styles.logo}></div>
+            <div className={styles.imfo}>
+                {name ? (
+                    <>
+                        <button>{name}</button>
+                        <button onClick={handleLogout}>로그아웃</button>
+                    </>
+                ) : (
+                    <>
+                        <div id="naverIdLogin" style={{position: "absolute", top: "-100000px"}}/> {/* 네이버 로그인 버튼을 이 div에 렌더링 */}
+                        <button onClick={handleNaverLogin}>로그인</button>
+                    </>
+                )}
+            </div>
         </div>
-      </InnerWrapper>
-    </Wrapper>
+    </div>
+    // <Wrapper>
+    //     <InnerWrapper>
+    //     <InnerLogo></InnerLogo>
+    //     <div>
+    //         {name ? (
+    //             <>
+    //                 <InnerButton>{name}</InnerButton>
+    //                 <InnerButton onClick={handleLogout}>로그아웃</InnerButton>
+    //             </>
+    //         ) : (
+    //             <>
+    //                 <div id="naverIdLogin" style={{position: "absolute", top: "-100000px"}}/> {/* 네이버 로그인 버튼을 이 div에 렌더링 */}
+    //                 <InnerButton onClick={handleNaverLogin}>로그인</InnerButton>
+    //             </>
+    //         )}
+    //         </div>
+    //     </InnerWrapper>
+    // </Wrapper>
   );
 }

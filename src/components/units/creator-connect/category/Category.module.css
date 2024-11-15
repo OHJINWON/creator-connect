@@ -1,0 +1,114 @@
+.categoryMenuBox {
+  position: relative;
+  z-index: 100;
+  transform: translate3d(0px, 0px, 0px);
+  flex-grow: 1px;
+}
+.categoryMenuListBox {
+  background: #fff;
+  position: relative;
+}
+.categoryMenuListBox::before {
+  background: rgba(0, 0, 0, .05);
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+.categoryMenuList {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1250px;
+  position: relative;
+  padding: 15px 0;
+}
+.categoryMenu {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  overflow-x: auto;
+  padding-left: 20px;
+  white-space: nowrap;
+}
+.categoryMenu > li {
+  display: inline-flex;
+  vertical-align: top;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.categoryMenu::-webkit-scrollbar {
+  display: none;
+}
+
+.categoryMenu {
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+/* .categoryMenuBox::-webkit-scrollbar {
+  display: none;
+} */
+/*
+.categoryMenu {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px 0;
+}
+
+.categoryMenu li {
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+.categoryMenu li.active {
+  font-weight: bold;
+  color: black;
+  text-decoration: underline;
+} */
+
+/* 스크롤바 숨기기 (선택사항) */
+.categoryMenuBox::-webkit-scrollbar {
+  display: none;
+}
+
+/* -------------------- */
+/* .categoryMenuBox {
+  width: 100%;
+  height: 40px;
+  background: gray;
+}
+.categoryMenu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.categoryMenu li {
+  padding: 0 5px;
+} */
+/* -------------------------- */
+/* .categoryMenu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .categoryMenu li {
+    margin-right: 16px;
+    cursor: pointer;
+    color: #ccc; 
+  }
+  
+  .categoryMenu li.active {
+    color: black !important; 
+    font-weight: bold;
+    border-bottom: 2px solid black; 
+  }
+  
+  .categoryMenu li:hover {
+    color: #666; 
+  } */

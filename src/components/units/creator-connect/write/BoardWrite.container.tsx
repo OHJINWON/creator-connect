@@ -5,6 +5,22 @@ import { CREATE_BOARD, FETCH_USER } from "./BoardWrite.queries";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+const categories: string[] = [
+    "여행",
+    "패션",
+    "뷰티",
+    "푸드",
+    "IT테크",
+    "자동차",
+    "리빙",
+    "육아",
+    "생활건강",
+    "게임",
+    "동물·펫",
+    "운동·레저",
+    "프로스포츠",
+  ];
+
 export default function BoardWrite () {
 
     const router = useRouter()
@@ -14,7 +30,7 @@ export default function BoardWrite () {
     const [nickname, setNickName] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [age, setAge] = useState<number>(0)
-    const [field, setField] = useState<any>()
+    const [field, setField] = useState<string[]>([])
     const [price, setPrice] = useState<number>(0)
     const [blogUri, setBlogUri] = useState<string>("")
     const [info, setInfo] = useState<string>("")
@@ -29,12 +45,10 @@ export default function BoardWrite () {
     useEffect(() => {
         // 클라이언트 사이드에서 sessionStorage에 접근
         const email = sessionStorage.getItem("email");
-        setStoredEmail(email);
-        // 한국나이 구하는 로직 
-        
+        setStoredEmail(email);   
     }, []);
 
-    console.log("BoardWrite", storedEmail)
+    // console.log("BoardWrite", storedEmail)
 
     const { data } = useQuery<Pick<IQuery, "fetchUser">, IQueryFetchUserArgs>(FETCH_USER, {
         variables: {
@@ -50,8 +64,9 @@ export default function BoardWrite () {
         }
     }, [data])
     
-    console.log("data", data)
-    console.log("나이",age)
+    // console.log("data", data)
+    // console.log("나이",age)
+    
     const onChangeNickName = (e: ChangeEvent<HTMLInputElement>): void => {
         setNickName(e.target.value)
         if(nickname !== "") {
@@ -66,12 +81,17 @@ export default function BoardWrite () {
         }
     }
 
-    const onChangeField = (e: ChangeEvent<HTMLInputElement>): void => {
-        setField(e.target.value)
-        if(field) {
-            setErrorField("")
+    // 분야 내용 클리하는 이벤트
+    const handleCategoryClick = (selectedField: string): void => {
+        if (field.includes(selectedField)) {
+            setField(field.filter((item) => item !== selectedField)); // 이미 선택된 항목은 배열에서 제거
+        } else {
+            setField([...field, selectedField]); // 새로운 항목을 배열에 추가
         }
-    }
+        if (field.length > 0) setErrorField("");
+    };
+
+    console.log("field",field)
 
     const onChangePrice = (e: ChangeEvent<HTMLInputElement>): void => {
         setPrice(Number(e.target.value))
@@ -138,7 +158,7 @@ export default function BoardWrite () {
             price={price}
             blogUri={blogUri}
             info={info}
-
+            categories={categories}
             errNickName={errNickName}
             errPassword={errPassword}
             errField={errField}
@@ -146,9 +166,10 @@ export default function BoardWrite () {
             errInfo={errInfo}
             
             onClickSubmit={onClickSubmit}
+            handleCategoryClick={handleCategoryClick}
             onChangeNickName={onChangeNickName}
             onChangePassword={onChangePassword}
-            onChangeField={onChangeField}
+            // onChangeField={onChangeField}
             onChangePrice={onChangePrice}
             onChangeInfo={onChangeInfo} 
         />
